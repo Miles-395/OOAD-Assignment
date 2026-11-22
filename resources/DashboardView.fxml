@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Main window after login: menu on the left, the chosen screen in the centre. Controller: view.DashboardView. -->
+<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="view.DashboardView" stylesheets="@styles.css">
+    <left>
+        <VBox spacing="6" prefWidth="235" minWidth="235" styleClass="sidebar">
+            <padding>
+                <Insets top="20" right="12" bottom="20" left="12"/>
+            </padding>
+            <children>
+                <Label text="Banking System" styleClass="brand"/>
+                <Button fx:id="overviewButton" text="Overview" styleClass="menu-button" maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT" onAction="#showOverview"/>
+                <Button fx:id="customersButton" text="Customers" styleClass="menu-button" maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT" onAction="#showCustomers"/>
+                <Button fx:id="accountsButton" text="Accounts" styleClass="menu-button" maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT" onAction="#showAccounts"/>
+                <Button fx:id="transactionsButton" text="Transactions" styleClass="menu-button" maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT" onAction="#showTransactions"/>
+                <Button fx:id="interestButton" text="Monthly Interest" styleClass="menu-button" maxWidth="1.7976931348623157E308" alignment="CENTER_LEFT" onAction="#showInterest"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Label fx:id="userLabel" styleClass="sidebar-user"/>
+                <Button text="Log out" styleClass="logout" maxWidth="1.7976931348623157E308" onAction="#handleLogout"/>
+            </children>
+        </VBox>
+    </left>
+</BorderPane>

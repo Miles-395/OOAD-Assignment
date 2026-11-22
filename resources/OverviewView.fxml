@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Overview screen: summary cards and the account products. Controller: view.OverviewView. -->
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="view.OverviewView" stylesheets="@styles.css">
+    <content>
+        <VBox spacing="20">
+            <padding>
+                <Insets top="24" right="24" bottom="24" left="24"/>
+            </padding>
+            <children>
+                <Label text="Overview" styleClass="heading"/>
+                <FlowPane hgap="16" vgap="16">
+                    <children>
+                        <VBox spacing="4" prefWidth="290" styleClass="card">
+                            <padding>
+                                <Insets top="16" right="16" bottom="16" left="16"/>
+                            </padding>
+                            <children>
+                                <Label fx:id="customersLabel" text="0" styleClass="card-value"/>
+                                <Label text="Customers" styleClass="card-title"/>
+                            </children>
+                        </VBox>
+                        <VBox spacing="4" prefWidth="290" styleClass="card">
+                            <padding>
+                                <Insets top="16" right="16" bottom="16" left="16"/>
+                            </padding>
+                            <children>
+                                <Label fx:id="accountsLabel" text="0" styleClass="card-value"/>
+                                <Label text="Accounts" styleClass="card-title"/>
+                            </children>
+                        </VBox>
+                        <VBox spacing="4" prefWidth="290" styleClass="card">
+                            <padding>
+                                <Insets top="16" right="16" bottom="16" left="16"/>
+                            </padding>
+                            <children>
+                                <Label fx:id="activeLabel" text="0" styleClass="card-value"/>
+                                <Label text="Active accounts" styleClass="card-title"/>
+                            </children>
+                        </VBox>
+                        <VBox spacing="4" prefWidth="290" styleClass="card">
+                            <padding>
+                                <Insets top="16" right="16" bottom="16" left="16"/>
+                            </padding>
+                            <children>
+                                <Label fx:id="pendingLabel" text="0" styleClass="card-value"/>
+                                <Label text="Pending activation" styleClass="card-title"/>
+                            </children>
+                        </VBox>
+                        <VBox spacing="4" prefWidth="290" styleClass="card">
+                            <padding>
+                                <Insets top="16" right="16" bottom="16" left="16"/>
+                            </padding>
+                            <children>
+                                <Label fx:id="depositsLabel" text="0" styleClass="card-value"/>
+                                <Label text="Total deposits held" styleClass="card-title"/>
+                            </children>
+                        </VBox>
+                        <VBox spacing="4" prefWidth="290" styleClass="card">
+                            <padding>
+                                <Insets top="16" right="16" bottom="16" left="16"/>
+                            </padding>
+                            <children>
+                                <Label fx:id="typesLabel" text="0" styleClass="card-value"/>
+                                <Label text="Savings / Investment / Cheque" styleClass="card-title"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </FlowPane>
+                <VBox spacing="6" styleClass="panel">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16"/>
+                    </padding>
+                    <children>
+                        <Label text="Account products" styleClass="heading"/>
+                        <Label text="Savings: deposits only, no withdrawals, 0.05% interest per month." styleClass="hint" wrapText="true"/>
+                        <Label text="Investment: deposits and withdrawals, 5% interest per month, opens with at least BWP 500.00." styleClass="hint" wrapText="true"/>
+                        <Label text="Cheque: salary account for working individuals, any deposits and withdrawals, employer details required." styleClass="hint" wrapText="true"/>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>
