@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Customers screen: list, search and register customers. Controller: view.CustomerView. -->
+<VBox spacing="12" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="view.CustomerView" stylesheets="@styles.css">
+    <padding>
+        <Insets top="24" right="24" bottom="24" left="24"/>
+    </padding>
+    <children>
+        <Label text="Customers" styleClass="heading"/>
+        <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <tabs>
+                <Tab text="All Customers">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets top="12" right="0" bottom="0" left="0"/>
+                            </padding>
+                            <children>
+                                <TextField fx:id="searchField" promptText="Search by name, customer ID, ID number or registration number" onKeyReleased="#handleSearch"/>
+                                <SplitPane dividerPositions="0.7" VBox.vgrow="ALWAYS">
+                                    <items>
+                                        <TableView fx:id="customerTable">
+                                            <columns>
+                                                <TableColumn text="Customer ID" prefWidth="100"/>
+                                                <TableColumn text="Name" prefWidth="220"/>
+                                                <TableColumn text="Type" prefWidth="90"/>
+                                                <TableColumn text="Contact" prefWidth="220"/>
+                                                <TableColumn text="Accounts" prefWidth="80"/>
+                                                <TableColumn text="Total balance" prefWidth="140"/>
+                                            </columns>
+                                            <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN"/>
+                                            </columnResizePolicy>
+                                            <placeholder>
+                                                <Label text="No customers found."/>
+                                            </placeholder>
+                                        </TableView>
+                                        <TextArea fx:id="detailsArea" editable="false" wrapText="true" promptText="Select a customer to see their details."/>
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab text="Register Individual">
+                    <content>
+                        <VBox>
+                            <children>
+                                <Label text="Fields marked * are required. Customers must be at least 18." styleClass="hint" wrapText="true"/>
+                                <GridPane hgap="12" vgap="10" styleClass="form">
+                                    <padding>
+                                        <Insets top="16" right="16" bottom="16" left="16"/>
+                                    </padding>
+                                    <columnConstraints>
+                                        <ColumnConstraints minWidth="170" prefWidth="170" maxWidth="170"/>
+                                        <ColumnConstraints hgrow="ALWAYS" maxWidth="420"/>
+                                    </columnConstraints>
+                                    <children>
+                                        <Label text="ID / Omang number *" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="idNumberField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                        <Label text="First name *" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="firstNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                        <Label text="Last name *" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="lastNameField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                        <Label text="Date of birth *" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                        <DatePicker fx:id="dobPicker" promptText="Choose date of birth" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                        <Label text="Address *" styleClass="form-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="addressField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                                        <Label text="Next of kin" styleClass="form-label" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="nextOfKinField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                                        <Label text="Contact info *" styleClass="form-label" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="contactField" promptText="Phone and/or email" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                                        <Button text="Register customer" styleClass="primary" onAction="#registerIndividual" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+                <Tab text="Register Company">
+                    <content>
+                        <VBox>
+                            <children>
+                                <Label text="Fields marked * are required. Companies can open Savings and Investment accounts." styleClass="hint" wrapText="true"/>
+                                <GridPane hgap="12" vgap="10" styleClass="form">
+                                    <padding>
+                                        <Insets top="16" right="16" bottom="16" left="16"/>
+                                    </padding>
+                                    <columnConstraints>
+                                        <ColumnConstraints minWidth="170" prefWidth="170" maxWidth="170"/>
+                                        <ColumnConstraints hgrow="ALWAYS" maxWidth="420"/>
+                                    </columnConstraints>
+                                    <children>
+                                        <Label text="Registration number *" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="regNoField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                        <Label text="Company name *" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="companyNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                        <Label text="Line of business *" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="businessField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                        <Label text="Turnover (BWP)" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="turnoverField" promptText="Annual turnover in BWP" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                        <Label text="Shareholder info" styleClass="form-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="shareholdersField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                                        <Label text="Contact info *" styleClass="form-label" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                                        <TextField fx:id="companyContactField" promptText="Phone and/or email" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                                        <Button text="Register company" styleClass="primary" onAction="#registerCompany" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>
